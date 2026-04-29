@@ -20,4 +20,4 @@ const sentInvite = (...friends: string[]) => {
   );
 };
 
-sentInvite("korim", "rohim", "moodu", "jodu");
+sentInvite("korim", "rohim", "moodu");
