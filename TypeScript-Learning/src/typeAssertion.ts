@@ -15,3 +15,11 @@ const result = kgToGram(2) as number;
 console.log(result);
 const result2 = kgToGram("2kg") as string;
 console.log(result2);
+
+type customeError = {
+  message: string;
+};
+try {
+} catch (err) {
+  console.log((err as customeError).message);
+}
