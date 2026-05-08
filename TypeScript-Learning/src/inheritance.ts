@@ -35,3 +35,9 @@ const teacher1 = new Teacher("Jodu", 45, "Deshi", "lecturer");
 
 console.log(teacher1.address);
 teacher1.takeClass(5);
+
+function filterEvenNumbers(numbers: number[]): number[] {
+  return numbers.filter((num) => num % 2 === 0);
+}
+console.log("RUNNING...");
+console.log(filterEvenNumbers([1, 2, 4, 3, 4, 5, 6]));
