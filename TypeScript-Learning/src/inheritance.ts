@@ -40,4 +40,4 @@ function filterEvenNumbers(numbers: number[]): number[] {
   return numbers.filter((num) => num % 2 === 0);
 }
 console.log("RUNNING...");
-console.log(filterEvenNumbers([1, 2, 4, 3, 4, 5, 6]));
+console.log(filterEvenNumbers([1, 2, 43, 3, 4, 5, 6]));
