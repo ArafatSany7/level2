@@ -1,11 +1,13 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { readproduct } from "../service/product.service";
 import type { IProduct } from "../types/product.type";
+import { parseBody } from "../utility/parseBody";
 
-export const productController = (
+export const productController = async (
   req: IncomingMessage,
   res: ServerResponse,
 ) => {
+  // console.log("Request", req);
   const url = req.url;
   const method = req.method;
   // products => /products/1/ =>["","products",'1']
@@ -15,7 +17,7 @@ export const productController = (
 
   const id = urlPart && urlPart[1] === "products" ? Number(urlPart[2]) : null;
 
-  console.log("This is id : " + id);
+  // console.log("This is id : " + id);
 
   // GET ALL PRODUCT , ALL PRODUCT  KE NIYECHI
   if (url === "/products" && method === "GET") {
@@ -47,6 +49,16 @@ export const productController = (
       JSON.stringify({
         message: "Product retrive successfully ",
         data: product,
+      }),
+    );
+  } else if (method === "POST" && url === "/products") {
+    const body = await parseBody(req);
+    console.log("Body", body);
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Product retrive successfully ",
+        //data: product,
       }),
     );
   }

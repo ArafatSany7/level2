@@ -1,0 +1,8 @@
+$kind: http-request
+name: http://localhost:5000/products
+url: http://localhost:5000/products
+method: POST
+body:
+  type: json
+  content: "{\r\n    \"name\":\"Modu\"\r\n}"
+order: 1778438162274
