@@ -8,5 +8,45 @@
     "id": 2,
     "name": "Sany2",
     "price": 100
+  },
+  {
+    "id": 3,
+    "name": "Alex",
+    "price": 150
+  },
+  {
+    "id": 4,
+    "name": "Jordan",
+    "price": 225
+  },
+  {
+    "id": 5,
+    "name": "Casey",
+    "price": 85
+  },
+  {
+    "id": 6,
+    "name": "Morgan",
+    "price": 310
+  },
+  {
+    "id": 7,
+    "name": "Taylor",
+    "price": 120
+  },
+  {
+    "id": 8,
+    "name": "Riley",
+    "price": 450
+  },
+  {
+    "id": 9,
+    "name": "Skyler",
+    "price": 95
+  },
+  {
+    "id": 10,
+    "name": "Quinn",
+    "price": 200
   }
 ]
