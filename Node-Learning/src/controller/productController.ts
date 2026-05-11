@@ -52,6 +52,7 @@ export const productController = async (
       }),
     );
   } else if (method === "POST" && url === "/products") {
+    // Created product by post method
     const body = await parseBody(req);
     // console.log("Body", body);
     const products = readproduct();
@@ -67,7 +68,32 @@ export const productController = async (
     res.end(
       JSON.stringify({
         message: "Product retrive successfully ",
-        data: products,
+        data: newProduct,
+      }),
+    );
+  } else if (method === "PUT" && id !== null) {
+    const body = await parseBody(req);
+    const products = readproduct();
+    const index = products.findIndex((p: IProduct) => p.id === id);
+    console.log(index);
+    if (index < 0) {
+      res.writeHead(404, { "content-type": "application/json" });
+      res.end(
+        JSON.stringify({
+          message: "Product not found! ",
+          data: null,
+        }),
+      );
+    }
+
+    // console.log(products[index]);
+    products[index] = { id: products[index].id, ...body };
+    insertProduct(products);
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Product Updated ",
+        data: products[index],
       }),
     );
   }
