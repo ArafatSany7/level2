@@ -2,6 +2,7 @@ import type { IncomingMessage, ServerResponse } from "http";
 import { insertProduct, readproduct } from "../service/product.service";
 import type { IProduct } from "../types/product.type";
 import { parseBody } from "../utility/parseBody";
+import { sendRespons } from "../utility/sendResponse";
 
 export const productController = async (
   req: IncomingMessage,
@@ -21,45 +22,37 @@ export const productController = async (
 
   // GET ALL PRODUCT , ALL PRODUCT  KE NIYECHI
   if (url === "/products" && method === "GET") {
-    /* const products = [
-      {
-        id: 1,
-        name: "Sany",
-      },
-      {
-        id: 2,
-        name: "Sany2",
-      },
-    ];*/
-    const products = readproduct(); //Array Ashbe
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "Products retrive successfully ",
-        data: products,
-      }),
-    );
+    try {
+      const products = readproduct(); //Array Ashbe
+      return sendRespons(
+        res,
+        200,
+        true,
+        "Products retrive successfully",
+        products,
+      );
+    } catch (error) {
+      return sendRespons(res, 500, false, "Something went wrong", error);
+    }
   } else if (method === "GET" && id !== null) {
     //get single product
-    const products = readproduct();
-    const product = products.find((p: IProduct) => p.id === id);
-    // console.log(product);
-    if (!product) {
-      res.writeHead(404, { "content-type": "application/json" });
-      res.end(
-        JSON.stringify({
-          message: "Product not found! ",
-          data: product,
-        }),
+    try {
+      const products = readproduct();
+      const product = products.find((p: IProduct) => p.id === id);
+      // console.log(product);
+      if (!product) {
+        return sendRespons(res, 404, false, "product not found");
+      }
+      return sendRespons(
+        res,
+        200,
+        true,
+        "Products retrive successfully",
+        products,
       );
+    } catch (error) {
+      return sendRespons(res, 500, false, "Something went wrong", error);
     }
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "Product retrive successfully ",
-        data: product,
-      }),
-    );
   } else if (method === "POST" && url === "/products") {
     // Created product by post method
     const body = await parseBody(req);
