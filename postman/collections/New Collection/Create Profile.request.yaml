@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:5000/profile
+method: POST
+body:
+  type: json
+  content: ""
+order: 302206048153132
