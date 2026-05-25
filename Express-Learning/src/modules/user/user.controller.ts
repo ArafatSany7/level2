@@ -27,7 +27,7 @@ const getAllUser = async (req: Request, res: Response) => {
     const result = await userService.getALLUSersFromDB();
     res.status(200).json({
       success: true,
-      message: "Users retrieve successfully",
+      message: "Users retrievee successfully",
       data: result.rows,
     });
   } catch (error: any) {
