@@ -38,7 +38,7 @@ class Animal {
 }
 
 const dog = new Animal("Dogesh ", "Dog", "gheo  gheo");
-const cat = new Animal("Billu", "Bilai", "mew mew");
+const cat = new Animal("Billu ", "Bilai", "mew mew");
 
 console.log(dog.name);
 console.log(cat.sound);
