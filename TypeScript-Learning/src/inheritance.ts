@@ -28,7 +28,7 @@ class Teacher extends Parent {
   }
 }
 
-const student1 = new Student("Modu", 14, "BD");
+const student1 = new Student("Modu ", 14, "BD");
 student1.getSleep(12);
 
 const teacher1 = new Teacher("Jodu", 45, "Deshi", "lecturer");
