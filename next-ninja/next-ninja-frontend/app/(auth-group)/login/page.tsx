@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export default function LoginPage() {
+    console.log(process.env.BACKEND_API_URL, "sensitive");
+    console.log(process.env.NEXT_PUBLIC_BACKEND_API_URL, "public");
     return (
         <Card className="w-full max-w-sm">
             <CardHeader>
